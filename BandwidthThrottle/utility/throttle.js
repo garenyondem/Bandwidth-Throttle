@@ -1,7 +1,9 @@
 ﻿var Throttle = require('throttle'),
     fs = require('fs'),
     request = require('request'),
-    cuid = require('cuid');
+    cuid = require('cuid'),
+    log = require('./log'),
+    consoleLog = new log.console();
 
 function getFileName(link) {
     var fileName = link.split('/');
@@ -27,7 +29,7 @@ function download(limit, link, dest, reportInterval, callback) {
         id = cuid();
 
     global[id] = setInterval(() => {
-        console.log(Number((transferredSize * 100) / totalSize).toFixed(2) + '%');
+        consoleLog.info(Number((transferredSize * 100) / totalSize).toFixed(2) + '%');
     }, reportInterval);
 
     request(link)

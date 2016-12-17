@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="test\test-throttle.js" />
+    <Compile Include="utility\log.js" />
     <Compile Include="utility\throttle.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />

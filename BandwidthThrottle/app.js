@@ -1,4 +1,6 @@
-﻿var throttle = require('./utility/throttle');
+﻿var throttle = require('./utility/throttle'),
+    log = require('./utility/log'),
+    consoleLog = new log.console();
 
 const destination = __dirname + '/temp/';
 const videoLink = 'http://istr.izlesene.com/data/videos/9645/9645256-480_3-170k.mp4?token=r87X3Ltkf_Gck4AVwcg1HA&ts=1482071796';
@@ -12,13 +14,12 @@ function options(bps, chunkSize, highWaterMark) {
         highWaterMark: highWaterMark
     }
 }
-
 // 1 Mbit == 0.125 Mbyte == 125 000 byte
 // limit or options
 throttle.download(125000 * 5, videoLink, destination, 3000, function (err) {
     if (!err) {
-        console.log('Download complete');
+        consoleLog.success('Download complete');
     } else {
-        console.error(err);
+        consoleLog.error(err);
     }
 });
