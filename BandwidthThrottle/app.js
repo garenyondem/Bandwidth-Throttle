@@ -15,7 +15,7 @@ function options(bps, chunkSize, highWaterMark) {
 
 // 1 Mbit == 0.125 Mbyte == 125 000 byte
 // limit or options
-throttle.download(125000 * 5, videoLink, destination, 3000, function (err) {
+throttle.download(125000 * 5, videoLink, destination, 3000, (err) => {
     if (!err) {
         console.log('Download complete');
     } else {
